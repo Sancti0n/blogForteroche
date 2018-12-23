@@ -1,12 +1,3 @@
-<?php
-//On inclut le fichier dont on a besoin (ici à la racine de notre site)
-require './src/DAO/DAO.php';
-//Ne pas oublier d'ajouter le fichier Article.php
-require './src/DAO/ArticleDAO.php';
-//Ne pas oublier d'ajouter le fichier Comment.php
-require './src/DAO/CommentDAO.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,7 +28,7 @@ require './src/DAO/CommentDAO.php';
     $article->closeCursor();
     
     ?>
-    <a href="home.php">Retour à la liste des articles</a>
+    <a href="../public/index.php">Retour à la liste des articles</a>
     <div id="comments" class="text-left" style="margin-left: 50px">
         <h3>Commentaires</h3>
         <?php

@@ -1,10 +1,3 @@
-<?php
-//On inclut le fichier dont on a besoin (ici à la racine de notre site)
-require './src/DAO/DAO.php';
-
-require './src/DAO/ArticleDAO.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,7 +20,7 @@ require './src/DAO/ArticleDAO.php';
         while ($data = $articles->fetch()) {
         ?>
         	<div>
-        		<h2><a href="single.php?idArt=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
+        		<h2><a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
         		<p><?= htmlspecialchars($data['content']);?></p>
         		<p><?= htmlspecialchars_decode($data['author']);?></p>
         		<p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
