@@ -14,10 +14,7 @@
         //Pour obtenir la racine
         //echo $_SERVER['DOCUMENT_ROOT'];
 
-        $article = new \App\src\DAO\ArticleDAO();
-        $articles = $article->getArticles();
-
-        while ($data = $articles->fetch()) {
+        while ($data = $article->fetch()) {
         ?>
         	<div>
         		<h2><a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
@@ -29,7 +26,7 @@
         	
         <?php
         }
-        $articles->closeCursor();
+        $article->closeCursor();
         ?>
     </div>
 </body>

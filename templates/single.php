@@ -11,9 +11,7 @@
     <p>En construction</p>
     <?php
 
-    $article = new App\src\DAO\ArticleDAO();
-    $article = $article->getArticle($_GET['idArt']);
-    $data = $article->fetch()
+    $data = $articles->fetch()
     
     ?>
         <div>
@@ -25,16 +23,13 @@
         <br>
     <?php
     
-    $article->closeCursor();
+    $articles->closeCursor();
     
     ?>
     <a href="../public/index.php">Retour à la liste des articles</a>
     <div id="comments" class="text-left" style="margin-left: 50px">
         <h3>Commentaires</h3>
         <?php
-
-        $comment = new App\src\DAO\CommentDAO();
-        $comments = $comment->getCommentsFromArticle($_GET['idArt']);
         while($datas = $comments->fetch()) {
             ?>
             <h4><?= htmlspecialchars($datas['pseudo']);?></h4>
