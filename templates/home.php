@@ -11,22 +11,18 @@
         <p>En construction</p>
 
         <?php
-        //Pour obtenir la racine
-        //echo $_SERVER['DOCUMENT_ROOT'];
-
-        while ($data = $article->fetch()) {
+        foreach ($articles as $article) {
         ?>
-        	<div>
-        		<h2><a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($data['id']);?>"><?= htmlspecialchars($data['title']);?></a></h2>
-        		<p><?= htmlspecialchars($data['content']);?></p>
-        		<p><?= htmlspecialchars_decode($data['author']);?></p>
-        		<p>Créé le : <?= htmlspecialchars($data['date_added']);?></p>
-        	</div>
-        	<br>
-        	
+            <div>
+                <h2><a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></h2>
+                <p><?= htmlspecialchars($article->getContent());?></p>
+                <p><?= htmlspecialchars($article->getAuthor());?></p>
+                <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
+            </div>
+            <br>
+            
         <?php
         }
-        $article->closeCursor();
         ?>
     </div>
 </body>
