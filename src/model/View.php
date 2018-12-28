@@ -19,7 +19,7 @@ class View {
 
 	private function renderfile($file, $data) {
 		if (file_exists($file)) {
-			extract($data);
+            extract($data);
 			ob_start();
 			require $file;
 			return ob_get_clean();

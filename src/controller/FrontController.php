@@ -23,7 +23,6 @@ class FrontController {
 		$this->view->render('home', [
 			'articles' => $articles
 		]);
-		//require '../templates/home.php';
 	}
 
 	public function article($id) {
@@ -33,6 +32,5 @@ class FrontController {
 			'article' => $article,
 			'comments' => $comments
 		]);
-		//require '../templates/single.php';
 	}
 }

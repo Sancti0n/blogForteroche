@@ -1,8 +1,18 @@
 <?php
+session_start();
+?>
+<?php
 $this->title = "Accueil";
 ?>
 <h1>Mon blog</h1>
 <p>En construction</p>
+<?php
+if (isset($_SESSION['add_article'])) {
+	echo '<p>' . $_SESSION['add_article'] . '<p>';
+	unset($_SESSION['add_article']);
+}
+?>
+<a href="../public/index.php?route=addArticle">Ajouter un article</a>
 <?php
 foreach ($articles as $article) {
 ?>
