@@ -6,8 +6,8 @@ use App\src\model\Comment;
 
 class CommentDAO extends DAO {
 
-	public function getCommentsFromArticle($idArt) {
-		$sql = 'SELECT id, pseudo, content, date_added FROM comment WHERE article_id = ?';
+    public function getCommentsFromArticle($idArt) {
+        $sql = 'SELECT id, pseudo, content, date_added FROM comment WHERE article_id = ?';
         $result = $this->sql($sql, [$idArt]);
         $comments = [];
         foreach ($result as $row) {
@@ -15,9 +15,9 @@ class CommentDAO extends DAO {
             $comments[$commentId] = $this->buildObject($row);
         }
         return $comments;
-	}
+    }
 
-	private function buildObject(array $row) {
+    private function buildObject(array $row) {
         $comment = new Comment();
         $comment->setId($row['id']);
         $comment->setPseudo($row['pseudo']);
