@@ -25,8 +25,14 @@ class Router {
                 if ($_GET['route'] === 'article') {
                     $this->frontController->article($_GET['idArt']);
                 }
-                else if ($_GET['route'] === 'addArticle') {
+                else if ($_GET['route'] === 'adminAddArticle') {
                     $this->backController->addArticle($_POST);
+                }
+                else if ($_GET['route'] === 'adminHome') {
+                    $this->backController->adminHome();
+                }
+                else if ($_GET['route'] === 'adminLogin') {
+                    $this->backController->adminLogin();
                 }
                 else {
                     $this->errorController->unknown();
@@ -41,3 +47,4 @@ class Router {
         }
     }
 }
+//Rajouter adminIsLoggued comme route vers auth.php ?

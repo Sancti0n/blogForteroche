@@ -1,7 +1,4 @@
 <?php
-session_start();
-?>
-<?php
 $this->title = "Accueil";
 ?>
 <h1>Mon blog</h1>
@@ -12,7 +9,7 @@ if (isset($_SESSION['add_article'])) {
     unset($_SESSION['add_article']);
 }
 ?>
-<a href="../public/index.php?route=addArticle">Ajouter un article</a>
+<a href="../public/index.php?route=adminLogin">Se connecter</a><br>
 <?php
 foreach ($articles as $article) {
 ?>
@@ -22,7 +19,7 @@ foreach ($articles as $article) {
         <p><?= htmlspecialchars($article->getAuthor());?></p>
         <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
     </div>
-    <br>        
+    <br>
 <?php
 }
 ?>

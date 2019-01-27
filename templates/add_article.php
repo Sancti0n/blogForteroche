@@ -4,7 +4,7 @@ $this->title = "Ajouter un article";
 <h1>Mon blog</h1>
 <p>En construction</p>
 <div>
-    <form method="post" action="../public/index.php?route=addArticle">
+    <form method="post" action="../public/index.php?route=adminAddArticle">
         <label for="title">Titre</label><br>
         <input type="text" id="title" name="title" value="<?php
             if(isset($post['title'])) {
