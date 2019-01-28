@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require '../config/dev.php';
 require '../config/Autoloader.php';
 \App\config\Autoloader::register();

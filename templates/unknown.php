@@ -1,3 +1,2 @@
 <?php
-
 echo 'Page inconnue';

@@ -1,7 +1,4 @@
-<?php
-$this->title = "Ajouter un article";
-?>
-<h1>Mon blog</h1>
+<?php $this->title = "Ajouter un article"; ?>
 <p>En construction</p>
 <div>
     <form method="post" action="../public/index.php?route=adminAddArticle">

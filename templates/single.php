@@ -1,9 +1,6 @@
-<?php
-$this->title = "Article";
-?>
-<h1>Mon blog</h1>
+<?php $this->title = "Article"; ?>
 <p>En construction</p>
-<div>
+<div class="article">
     <h2><?= htmlspecialchars($article->getTitle());?></h2>
     <p><?= htmlspecialchars($article->getContent());?></p>
     <p><?= htmlspecialchars($article->getAuthor());?></p>

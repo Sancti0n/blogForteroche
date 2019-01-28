@@ -1,3 +1,4 @@
+<?php $this->title = "Page de connexion"; ?>
 <form method="post" action="">
     <p>
         <label for="pseudo">Pseudo : </label>
@@ -11,5 +12,4 @@
         <input type="submit" value="s'identifier">
     </p>
 </form>
-
 <?php echo $message ?>

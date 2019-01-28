@@ -30,7 +30,6 @@ class ArticleDAO extends DAO {
     }
 
     public function addArticle($article) {
-        //Récupération de $title, $content, $author
         extract($article);
         $sql = 'INSERT INTO article (title, content, author, date_added) VALUES (?, ?, ?, NOW())';
         $this->sql($sql, [$title, $content, $author]);

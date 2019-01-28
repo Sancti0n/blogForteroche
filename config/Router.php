@@ -47,4 +47,3 @@ class Router {
         }
     }
 }
-//Rajouter adminIsLoggued comme route vers auth.php ?
