@@ -34,6 +34,9 @@ class Router {
                 else if ($_GET['route'] === 'adminLogin') {
                     $this->backController->adminLogin();
                 }
+                else if ($_GET['route'] === 'adminDeconnexion') {
+                    $this->backController->adminDeconnexion();
+                }
                 else {
                     $this->errorController->unknown();
                 }

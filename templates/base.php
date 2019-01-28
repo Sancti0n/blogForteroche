@@ -14,7 +14,7 @@
         <?php
         if (isset($_SESSION['adminIsLoggued'])) {
             echo "<p><a href=\"../public/index.php?route=adminAddArticle\">Ajouter un article</a></p>";
-            echo "<p><a href=\"../public/deconnexion.php\">Déconnexion</a></p>";
+            echo "<p><a href=\"../public/index.php?route=adminDeconnexion\">Déconnexion</a></p>";
         }
         ?>
     </header>
