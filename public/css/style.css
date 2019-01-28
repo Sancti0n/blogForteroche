@@ -1,0 +1,41 @@
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    background-color: dodgerblue;
+    padding: 0;
+    padding-bottom: 7em;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: white;
+    top: 0;
+    left: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.article {
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    text-align: center;
+}
