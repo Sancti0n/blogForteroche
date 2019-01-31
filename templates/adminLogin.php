@@ -1,5 +1,5 @@
 <?php $this->title = "Page de connexion"; ?>
-<form method="post" action="">
+<form class="formLogin" method="post">
     <p>
         <label for="pseudo">Pseudo : </label>
         <input type="text" name="pseudo" id="pseudo">
@@ -9,7 +9,7 @@
         <input type="password" name="motdepasse" id="motdepasse">
     </p>
     <p>
-        <input type="submit" value="s'identifier">
+        <input class="bouton" type="submit" value="Se connecter">
     </p>
 </form>
-<?php echo $message ?>
+<?php echo "<p class=\"message\">".$message."</p>\n" ?>

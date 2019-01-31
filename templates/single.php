@@ -1,5 +1,4 @@
 <?php $this->title = "Article"; ?>
-<p>En construction</p>
 <div class="article">
     <h2><?= htmlspecialchars($article->getTitle());?></h2>
     <p><?= htmlspecialchars($article->getContent());?></p>
@@ -8,7 +7,7 @@
 </div>
 <br>
 <a href="../public/index.php">Retour à la liste des articles</a>
-<div id="comments" class="text-left" style="margin-left: 50px">
+<div id="comments" class="text-left">
     <h3>Commentaires</h3>
     <?php
     foreach ($comments as $comment) {

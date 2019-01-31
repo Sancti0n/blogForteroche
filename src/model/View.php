@@ -9,10 +9,10 @@ class View {
 
     public function render($template, $data = []) {
         $this->file = '../templates/' . $template . '.php';
-        $content = $this->renderfile($this->file, $data);
+        $contents = $this->renderfile($this->file, $data);
         $view = $this->renderfile('../templates/base.php', [
             'title' => $this->title,
-            'content' => $content
+            'contents' => $contents
         ]);
         echo $view;
     }

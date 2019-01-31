@@ -15,15 +15,16 @@ class BackController {
     }
 
     public function addArticle($post) {
-        //Modification !isset
         if (!isset($_SESSION['adminIsLoggued'])) {
             header('Location: ../public/index.php?route=adminLogin');
         }
         if (isset($post['submit'])) {
-            $articleDAO = new ArticleDAO();
-            $articleDAO->addArticle($post);
-            $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
-            header('Location: ../public/index.php?route=adminHome');
+            if (isset($title, $content, $author) && !empty($title) && !empty($content) && !empty($author)) {
+                $articleDAO = new ArticleDAO();
+                $articleDAO->addArticle($post);
+                $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
+                header('Location: ../public/index.php?route=adminHome');
+            }
         }
         $this->view->render('add_article', [
             'post' => $post
@@ -41,7 +42,7 @@ class BackController {
             return false;
         }
         return true;
-        }
+    }
 
     public function adminLogin() {
         if (isset($_SESSION['adminIsLoggued'])) {
@@ -64,7 +65,7 @@ class BackController {
             }
         }
         else {
-            $message = 'le login ou le mot de passe est vide';
+            $message = 'Le login ou le mot de passe est vide';
             $this->view->render('adminLogin', [
                 'message' => $message
             ]);

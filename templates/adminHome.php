@@ -1,5 +1,4 @@
 <?php $this->title = "Page Administrateur"; ?>
-<a href="../public/index.php?route=adminAddArticle">Ajouter un article</a>
 <?php
 foreach ($articles as $article) {
 ?>

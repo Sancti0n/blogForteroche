@@ -12,6 +12,12 @@ body {
     box-sizing: border-box;
 }
 
+a:link,
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 header {
     background-color: white;
     top: 0;
@@ -26,9 +32,80 @@ header {
     background-color: white;
     padding-left: 10px;
     padding-right: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 200px;
     border-radius: 10px;
+}
+
+.article h2 {
+    text-align: center;
+}
+
+.text-left {
+    margin-left: 50px;
+}
+
+.formLogin {
+    display: block;
+    background-color: bisque;
+    margin-top: 100px;
+    width: 280px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.formLogin p {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.bouton {
+    display: inline-block;
+    padding: 10px 25px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4ABDE4;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.bouton:hover {
+    background-color: dodgerblue;
+}
+
+.bouton:active {
+    background-color: dodgerblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.message {
+    text-align: center;
+}
+
+.formArticle {
+    display: block;
+    width: 800px;
+    height: 50%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 footer {
