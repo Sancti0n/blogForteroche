@@ -19,12 +19,12 @@ class BackController {
             header('Location: ../public/index.php?route=adminLogin');
         }
         if (isset($post['submit'])) {
-            if (isset($title, $content, $author) && !empty($title) && !empty($content) && !empty($author)) {
+            //if (isset($title, $content, $author)) {//&& !empty($title) && !empty($content) && !empty($author)) {
                 $articleDAO = new ArticleDAO();
                 $articleDAO->addArticle($post);
                 $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
                 header('Location: ../public/index.php?route=adminHome');
-            }
+            //}
         }
         $this->view->render('add_article', [
             'post' => $post

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../public/css/style.css">
     <title><?= $title ?></title>
-    
     <?php 
     if (isset($_SESSION['adminIsLoggued'])) {
         echo "<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=233q90o6e689gjqe2uepkf9b5zellqympx6sz92yrpaiu5s5'></script>";
@@ -26,14 +25,6 @@
         </script>";
     }
     ?>
-    
-    <script>
-        function contents() {
-            var content = tinyMCE.get('content').getContent();
-            //$('#TRUC').text(content);
-            //console.log(content);
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -63,12 +54,5 @@
         <p>Mentions légales</p>
         <p>Si vous désirez me contacter : <a href="mailto:">someone[at]example.com</a></p>
     </footer>
-    
-    <script
-		src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous">
-    </script>
-    
 </body>
 </html>

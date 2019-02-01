@@ -36,7 +36,8 @@ class ArticleDAO extends DAO {
             $this->sql($sql, [$title, $content, $author]);
         }
         else {
-            $erreur = "L\'un des champs de l\'article est vide";
+            header('Location: ../public/index.php?route=adminAddArticle');
+            echo "<p>L\'un des champs de l\'article est vide</p>";
         }
     }
 
