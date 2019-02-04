@@ -1,7 +1,7 @@
 <?php $this->title = "Article"; ?>
 <div class="article">
     <h2><?= htmlspecialchars($article->getTitle());?></h2>
-    <p><?= htmlspecialchars($article->getContent());?></p>
+    <p><?= $article->getContent();?>
     <p><?= htmlspecialchars($article->getAuthor());?></p>
     <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
 </div>

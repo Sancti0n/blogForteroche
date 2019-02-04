@@ -1,5 +1,4 @@
 <?php
-
 namespace App\config;
 
 use App\src\controller\BackController;
@@ -23,7 +22,12 @@ class Router {
         try {
             if (isset($_GET['route'])) {
                 if ($_GET['route'] === 'article') {
-                    $this->frontController->article($_GET['idArt']);
+                    if (isset($_GET['idArt']) && $_GET['idArt'] > 0) {
+                        $this->frontController->article($_GET['idArt']);
+                    }
+                    else {
+                        $this->errorController->unknown();
+                    }
                 }
                 else if ($_GET['route'] === 'adminAddArticle') {
                     $this->backController->addArticle($_POST);

@@ -25,7 +25,7 @@ class ArticleDAO extends DAO {
             return $this->buildObject($row);
         }
         else {
-            echo 'Aucun article existant avec cet identifiant';
+            header('Location: ../templates/unknown.php');
         }
     }
 
@@ -37,8 +37,17 @@ class ArticleDAO extends DAO {
         }
         else {
             header('Location: ../public/index.php?route=adminAddArticle');
-            echo "<p>L\'un des champs de l\'article est vide</p>";
+            //echo "<p>L\'un des champs de l\'article est vide</p>";
         }
+    }
+
+    public function modifyArticle($idArt) {
+        $sql = 'UPDATE article SET title = $title, content = $content, author = $author, date_added = $date_added WHERE id = $idArt ';
+
+    }
+
+    public function deleteArticle($idArt) {
+        $sql = 'DELETE id, title, content, author, date_added FROM article WHERE id = $idArt';
     }
 
     private function buildObject(array $row) {
