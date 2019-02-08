@@ -37,8 +37,8 @@ if (isset($_SESSION['add_article'])) {
             <td><a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></td>
             <td><?= htmlspecialchars($article->getAuthor());?></td>
             <td><?= htmlspecialchars($article->getDateAdded());?></td>
-            <td></td>
-            <td></td>
+            <td><a href="../public/index.php?route=updateArticle&idArt=<?= htmlspecialchars($article->getId());?>">Modifier</a></td>
+            <td><a href="../public/index.php?route=deleteArticle&idArt=<?= htmlspecialchars($article->getId());?>">Supprimer</a></td>
         </tr>
         <?php
         }

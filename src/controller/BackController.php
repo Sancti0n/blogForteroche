@@ -18,17 +18,44 @@ class BackController {
         if (!isset($_SESSION['adminIsLoggued'])) {
             header('Location: ../public/index.php?route=adminLogin');
         }
-        if (isset($post['submit'])) {
-            //if (isset($title, $content, $author)) {//&& !empty($title) && !empty($content) && !empty($author)) {
-                $articleDAO = new ArticleDAO();
-                $articleDAO->addArticle($post);
-                $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
-                header('Location: ../public/index.php?route=adminHome');
-            //}
+        else if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
+            $articleDAO = new ArticleDAO();
+            $articleDAO->addArticle($post);
+            $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
+            header('Location: ../public/index.php?route=adminHome');
         }
         $this->view->render('add_article', [
             'post' => $post
         ]);
+    }
+
+    public function updateArticle($idArt) {
+        if (!isset($_SESSION['adminIsLoggued'])) {
+            header('Location: ../public/index.php?route=adminLogin');
+        }
+        if (isset($_POST['submit']) ){//&& !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
+            $articleDAO = new ArticleDAO();
+            $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
+            $_SESSION['update_article'] = 'Un article a été modifié';
+            header('Location: ../public/index.php?route=adminHome');
+        }
+        $articleDAO = new ArticleDAO();
+        $articleDAO->getArticle($idArt);
+        $article = $articleDAO->getArticle($idArt);
+        $this->view->render('updateArticle', [
+            'post' => $_POST,
+            'article' => $article
+        ]);
+    }
+
+    public function deleteArticle($idArt) {
+        if (!isset($_SESSION['adminIsLoggued'])) {
+            header('Location: ../public/index.php?route=adminLogin');
+        }
+        $articleDAO = new ArticleDAO();
+        $articleDAO->deleteArticle($idArt);
+        $_SESSION['delete_article'] = 'Un article a été supprimé';
+        header('Location: ../public/index.php?route=adminHome');
     }
 
     private static function verification($nom, $pass) {
@@ -93,7 +120,6 @@ class BackController {
             );
         }
         session_destroy();
-        header('location: ../public/index.php');
+        header('Location: ../public/index.php');
     }
 }
-

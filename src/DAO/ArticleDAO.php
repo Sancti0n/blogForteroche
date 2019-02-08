@@ -5,7 +5,14 @@ namespace App\src\DAO;
 use App\src\model\Article;
 
 class ArticleDAO extends DAO {
-	
+    
+    /*public function countArticle() {
+        $sql = 'SELECT COUNT(*) FROM article';
+        $result = $this->sql($sql);
+        return $result->fetchColumn();
+    }*/
+    //https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/1668899-le-backend
+
     public function getArticles() {
         $sql = 'SELECT id, title, content, author, date_added FROM article ORDER BY id DESC';
         $result = $this->sql($sql);
@@ -35,19 +42,19 @@ class ArticleDAO extends DAO {
             $sql = 'INSERT INTO article (title, content, author, date_added) VALUES (?, ?, ?, NOW())';
             $this->sql($sql, [$title, $content, $author]);
         }
-        else {
-            header('Location: ../public/index.php?route=adminAddArticle');
-            //echo "<p>L\'un des champs de l\'article est vide</p>";
-        }
     }
 
-    public function modifyArticle($idArt) {
-        $sql = 'UPDATE article SET title = $title, content = $content, author = $author, date_added = $date_added WHERE id = $idArt ';
-
+    public function modifyArticle($idArt, $post) {
+        extract($post);
+        $sql = 'UPDATE article SET title = ?, content = ?, author = ?, date_added = NOW() WHERE id = ?';
+        $this->sql($sql, [$title, $content, $author, $idArt]);
     }
 
     public function deleteArticle($idArt) {
-        $sql = 'DELETE id, title, content, author, date_added FROM article WHERE id = $idArt';
+        $sql = 'DELETE FROM comment WHERE article_id = ?';
+        $this->sql($sql, [$idArt]);
+        $sql = 'DELETE FROM article WHERE id = ?';
+        $this->sql($sql, [$idArt]);
     }
 
     private function buildObject(array $row) {

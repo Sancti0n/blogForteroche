@@ -29,6 +29,12 @@ class Router {
                         $this->errorController->unknown();
                     }
                 }
+                else if ($_GET['route'] === 'updateArticle') {
+                    $this->backController->updateArticle($_GET['idArt']);
+                }
+                else if ($_GET['route'] === 'deleteArticle&idArt') {
+                    $this->backController->deleteArticle($_GET['idArt']);
+                }
                 else if ($_GET['route'] === 'adminAddArticle') {
                     $this->backController->addArticle($_POST);
                 }
