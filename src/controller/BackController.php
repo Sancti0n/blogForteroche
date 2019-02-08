@@ -100,6 +100,9 @@ class BackController {
     }
 
     public function adminHome() {
+        if (!isset($_SESSION['adminIsLoggued'])) {
+            header('Location: ../public/index.php?route=adminLogin');
+        }
         $this->view->render('adminHome', [
             'articles' => $this->articleDAO->getArticles()
         ]);
