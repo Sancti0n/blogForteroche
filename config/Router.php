@@ -22,30 +22,64 @@ class Router {
         try {
             if (isset($_GET['route'])) {
                 if ($_GET['route'] === 'article') {
-                    if (isset($_GET['idArt']) && $_GET['idArt'] > 0) {
+                    if (isset($_GET['idArt'])) {
                         $this->frontController->article($_GET['idArt']);
                     }
                     else {
                         $this->errorController->unknown();
                     }
                 }
+                else if ($_GET['route'] === 'postComment') {
+                    $this->frontController->addCommentsFromForm($_GET['idArt'], $_POST);
+                }
                 else if ($_GET['route'] === 'updateArticle') {
-                    $this->backController->updateArticle($_GET['idArt']);
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->updateArticle($_GET['idArt']);
+                    }
                 }
                 else if ($_GET['route'] === 'deleteArticle&idArt') {
-                    $this->backController->deleteArticle($_GET['idArt']);
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->deleteArticle($_GET['idArt']);
+                    }
                 }
                 else if ($_GET['route'] === 'adminAddArticle') {
-                    $this->backController->addArticle($_POST);
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->addArticle($_POST);
+                    }
+                    
                 }
                 else if ($_GET['route'] === 'adminHome') {
-                    $this->backController->adminHome();
-                }
-                else if ($_GET['route'] === 'adminLogin') {
-                    $this->backController->adminLogin();
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->adminHome();
+                    }
                 }
                 else if ($_GET['route'] === 'adminDeconnexion') {
-                    $this->backController->adminDeconnexion();
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->adminDeconnexion();
+                    }
+                }
+                else if ($_GET['route'] === 'adminLogin') {
+                    if (isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminHome');
+                    }
+                    else {
+                        $this->backController->adminLogin();
+                    }
                 }
                 else {
                     $this->errorController->unknown();

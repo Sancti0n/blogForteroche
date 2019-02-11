@@ -18,6 +18,17 @@ class FrontController {
         $this->view = new View();
     }
 
+    public function addCommentsFromForm($idArt, $post) {
+        if (isset($post['submit']) && !empty($post['pseudo']) && !empty($post['content'])) {
+            header('Location: ../public/index.php?route=article&idArt='.$idArt);
+            $commentDAO = new CommentDAO();
+            $commentDAO->addCommentsFromForm($idArt, $post);
+        }
+        $this->view->render('single', [
+            'post' => $post
+        ]);
+    }
+
     public function home() {
         $articles = $this->articleDAO->getArticles();
         $this->view->render('home', [

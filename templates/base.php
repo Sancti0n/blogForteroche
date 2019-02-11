@@ -14,7 +14,12 @@
     </div>
     <?php
     require '../templates/footer.php';
-    require '../templates/script.php';
+    if (isset($_SESSION['adminIsLoggued'])) {
+    ?>
+        <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=233q90o6e689gjqe2uepkf9b5zellqympx6sz92yrpaiu5s5'></script>
+        <script src="../public/js/tinymce/tinymce.js"></script>
+    <?php 
+    }
     ?>
 </body>
 </html>

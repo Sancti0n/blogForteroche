@@ -2,6 +2,7 @@
 namespace App\src\controller;
 
 use App\src\DAO\ArticleDAO;
+
 use App\src\model\View;
 use PDO;
 
@@ -15,25 +16,19 @@ class BackController {
     }
 
     public function addArticle($post) {
-        if (!isset($_SESSION['adminIsLoggued'])) {
-            header('Location: ../public/index.php?route=adminLogin');
-        }
-        else if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
+        if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->addArticle($post);
             $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
             header('Location: ../public/index.php?route=adminHome');
         }
         $this->view->render('add_article', [
-            'post' => $post
+            'post' => $post,
         ]);
     }
 
     public function updateArticle($idArt) {
-        if (!isset($_SESSION['adminIsLoggued'])) {
-            header('Location: ../public/index.php?route=adminLogin');
-        }
-        if (isset($_POST['submit']) ){//&& !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
+        if (isset($_POST['submit']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
             $_SESSION['update_article'] = 'Un article a été modifié';
@@ -49,9 +44,6 @@ class BackController {
     }
 
     public function deleteArticle($idArt) {
-        if (!isset($_SESSION['adminIsLoggued'])) {
-            header('Location: ../public/index.php?route=adminLogin');
-        }
         $articleDAO = new ArticleDAO();
         $articleDAO->deleteArticle($idArt);
         $_SESSION['delete_article'] = 'Un article a été supprimé';
@@ -72,9 +64,6 @@ class BackController {
     }
 
     public function adminLogin() {
-        if (isset($_SESSION['adminIsLoggued'])) {
-            header('Location: ../public/index.php?route=adminHome');
-        }
         if (isset($_POST['pseudo']) && isset($_POST['motdepasse'])) {
             $nom = $_POST['pseudo'];
             $motdepasse = $_POST['motdepasse'];
@@ -100,9 +89,6 @@ class BackController {
     }
 
     public function adminHome() {
-        if (!isset($_SESSION['adminIsLoggued'])) {
-            header('Location: ../public/index.php?route=adminLogin');
-        }
         $this->view->render('adminHome', [
             'articles' => $this->articleDAO->getArticles()
         ]);

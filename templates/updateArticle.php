@@ -1,6 +1,6 @@
 <?php $this->title = "Modifier un article"; ?>
 <div class="formArticle">
-    <form class="" method="post" action="../public/index.php?route=updateArticle&idArt=<?= $article->getId(); ?>" >
+    <form class="" method="post" action="../public/index.php?route=updateArticle&idArt=<?= $article->getId(); ?>">
         <label for="title">Titre</label><br>
         <input type="text" id="title" name="title" required value="<?php
             echo $article->getTitle();

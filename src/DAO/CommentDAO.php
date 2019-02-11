@@ -6,6 +6,14 @@ use App\src\model\Comment;
 
 class CommentDAO extends DAO {
 
+    public function addCommentsFromForm($idArt, $comment) {
+        extract($comment);
+        if (isset($pseudo, $content) && !empty($pseudo) && !empty($content)) {
+            $sql ='INSERT INTO comment (pseudo, content, article_id, date_added) VALUES (?, ?, ?, NOW())';
+            $this->sql($sql, [$pseudo, $content, $idArt]);
+        }
+    }
+
     public function getCommentsFromArticle($idArt) {
         $sql = 'SELECT id, pseudo, content, date_added FROM comment WHERE article_id = ?';
         $result = $this->sql($sql, [$idArt]);
