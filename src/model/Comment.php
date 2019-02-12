@@ -8,6 +8,7 @@ class Comment {
     private $pseudo;
     private $content;
     private $date_added;
+    private $is_reported;
 
     /**
      * @return mixed
@@ -63,5 +64,13 @@ class Comment {
      */
     public function setDateAdded($date_added) {
         $this->date_added = $date_added;
+    }
+
+    public function getIsReported() {
+        return $this->is_reported;
+    }
+
+    public function setIsReported($is_reported) {
+        $this->is_reported = $is_reported;
     }
 }

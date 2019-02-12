@@ -2,6 +2,7 @@
 namespace App\src\controller;
 
 use App\src\DAO\ArticleDAO;
+use App\src\DAO\CommentDAO;
 
 use App\src\model\View;
 use PDO;
@@ -13,6 +14,7 @@ class BackController {
     public function __construct() {
         $this->view = new View();
         $this->articleDAO = new ArticleDAO();
+        $this->commentDAO = new CommentDAO();
     }
 
     public function addArticle($post) {
@@ -90,7 +92,8 @@ class BackController {
 
     public function adminHome() {
         $this->view->render('adminHome', [
-            'articles' => $this->articleDAO->getArticles()
+            'articles' => $this->articleDAO->getArticles(),
+            'comments' => $this->commentDAO->getComments()
         ]);
     }
 

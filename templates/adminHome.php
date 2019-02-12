@@ -62,3 +62,11 @@ foreach ($articles as $article) {
 <?php
 }
 ?>
+
+<?php
+foreach ($comments as $comment) {
+?>
+    <?= ($comment->getIsReported()); ?>    
+<?php
+}
+?>

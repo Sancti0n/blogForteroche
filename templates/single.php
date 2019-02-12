@@ -1,8 +1,5 @@
 <?php $this->title = "Article"; ?>
 <div class="article">
-<?php var_dump($article);
-    
-    ?>
     <h2><?= htmlspecialchars($article->getTitle());?></h2>
     
     <p><?= $article->getContent();?>

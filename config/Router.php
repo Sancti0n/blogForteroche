@@ -29,6 +29,9 @@ class Router {
                         $this->errorController->unknown();
                     }
                 }
+                else if ($_GET['route'] === 'reportComment') {
+                    $this->frontController->reportComment($_GET['idComment'], $_GET['idArt']);
+                }
                 else if ($_GET['route'] === 'postComment') {
                     $this->frontController->addCommentsFromForm($_GET['idArt'], $_POST);
                 }
@@ -40,7 +43,7 @@ class Router {
                         $this->backController->updateArticle($_GET['idArt']);
                     }
                 }
-                else if ($_GET['route'] === 'deleteArticle&idArt') {
+                else if ($_GET['route'] === 'deleteArticle') {
                     if (!isset($_SESSION['adminIsLoggued'])) {
                         header('Location: ../public/index.php?route=adminLogin');
                     }

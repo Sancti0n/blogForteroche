@@ -4,11 +4,21 @@
     <p><a href="../public/index.php">Accueil</a></p>
     <?php
     if (isset($_SESSION['adminIsLoggued'])) {
-        echo "<p class=\"login\">".$_SESSION['adminIsLoggued']."</p>\n";
-        echo "<p><a href=\"../public/index.php?route=adminHome\">Administration</a> - <a href=\"../public/index.php?route=adminAddArticle\">Ajouter un article</a> - <a href=\"../public/index.php?route=adminDeconnexion\">Déconnexion</a></p>";
+        ?>
+        <p class="login"><?= $_SESSION['adminIsLoggued']?></p>
+        <p>
+            <a href="../public/index.php?route=adminHome">Administration</a>
+            <a href="../public/index.php?route=adminAddArticle">Ajouter un article</a>
+            <a href="../public/index.php?route=adminDeconnexion">Déconnexion</a>
+        </p>
+    <?php
     }
     else {
-        echo "<p class=\"connexion\"><a href=\"../public/index.php?route=adminLogin\">Se connecter</a></p>";
+        ?>
+        <p class="connexion">
+            <a href="../public/index.php?route=adminLogin">Se connecter</a>
+        </p>
+    <?php
     }
     ?>
 </header>

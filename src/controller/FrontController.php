@@ -18,15 +18,23 @@ class FrontController {
         $this->view = new View();
     }
 
+    public function reportComment($idComment, $idArt) {
+        $commentDAO = new CommentDAO();
+        $commentDAO->reportComment($idComment);
+        header('Location: ../public/index.php?route=article&idArt='.$idArt.'#'.$idComment);
+    }
+
     public function addCommentsFromForm($idArt, $post) {
         if (isset($post['submit']) && !empty($post['pseudo']) && !empty($post['content'])) {
             header('Location: ../public/index.php?route=article&idArt='.$idArt);
             $commentDAO = new CommentDAO();
             $commentDAO->addCommentsFromForm($idArt, $post);
+            $this->view->render('single', [
+                'post' => $post
+            ]);
         }
-        $this->view->render('single', [
-            'post' => $post
-        ]);
+        header('Location: ../public/index.php?route=article&idArt='.$idArt);
+        
     }
 
     public function home() {
