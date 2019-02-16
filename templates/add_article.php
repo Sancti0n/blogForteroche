@@ -7,14 +7,12 @@
                 echo $post['title'];
             }
             ?>"><br>
-
         <label for="content">Contenu</label><br>
         <textarea id="content" class="mceEditor" name="content"><?php 
             if (isset($post['content'])) {
                 echo $post['content'];
             }
         ?></textarea><br>
-
         <label for="author">Auteur</label><br>
         <input type="text" id="author" required name="author" value="<?php
             if (isset($post['author'])) {

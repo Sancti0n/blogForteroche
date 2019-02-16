@@ -5,13 +5,6 @@ namespace App\src\DAO;
 use App\src\model\Article;
 
 class ArticleDAO extends DAO {
-    
-    /*public function countArticle() {
-        $sql = 'SELECT COUNT(*) FROM article';
-        $result = $this->sql($sql);
-        return $result->fetchColumn();
-    }*/
-    //https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/1668899-le-backend
 
     public function getArticles() {
         $sql = 'SELECT id, title, content, author, date_added FROM article ORDER BY id DESC';

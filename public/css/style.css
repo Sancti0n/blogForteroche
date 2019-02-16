@@ -55,8 +55,22 @@ header {
     text-align: center;
 }
 
-.text-left {
-    margin-left: 50px;
+#comments {
+    background-color: white;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    padding-left: 10px;
+    padding-top: 0px;
+}
+
+#formComments {
+    background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }
 
 .formLogin {

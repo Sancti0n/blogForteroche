@@ -35,6 +35,14 @@ class Router {
                 else if ($_GET['route'] === 'postComment') {
                     $this->frontController->addCommentsFromForm($_GET['idArt'], $_POST);
                 }
+                else if ($_GET['route'] === 'updateComment') {
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->updateComment($_GET['idComment']);
+                    }
+                }
                 else if ($_GET['route'] === 'updateArticle') {
                     if (!isset($_SESSION['adminIsLoggued'])) {
                         header('Location: ../public/index.php?route=adminLogin');
@@ -43,6 +51,15 @@ class Router {
                         $this->backController->updateArticle($_GET['idArt']);
                     }
                 }
+                else if ($_GET['route'] === 'deleteComment') {
+                    if (!isset($_SESSION['adminIsLoggued'])) {
+                        header('Location: ../public/index.php?route=adminLogin');
+                    }
+                    else {
+                        $this->backController->deleteComment($_GET['idComment']);
+                    }
+                }
+
                 else if ($_GET['route'] === 'deleteArticle') {
                     if (!isset($_SESSION['adminIsLoggued'])) {
                         header('Location: ../public/index.php?route=adminLogin');

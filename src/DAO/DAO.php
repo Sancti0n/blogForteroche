@@ -1,8 +1,6 @@
 <?php
-
 //Pour toutes les classes dans DAO
 namespace App\src\DAO;
-
 //Uniquement pour la classe Database
 use PDO;
 
@@ -28,7 +26,7 @@ abstract class DAO {
         }
         //On lève une erreur si la connexion échoue
         catch(Exception $errorConnection) {
-            die ('Erreur de connection :'.$errorConnection->getMessage());
+            die ('Erreur de connexion :'.$errorConnection->getMessage());
         }
     }
 

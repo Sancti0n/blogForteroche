@@ -1,4 +1,4 @@
-<?php $this->title = "Article"; ?>
+<?php $this->title = $article->getTitle(); ?>
 <div class="article">
     <h2><?= htmlspecialchars($article->getTitle());?></h2>
     
@@ -7,15 +7,31 @@
     <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
 </div>
 <br>
-<a href="../public/index.php">Retour à la liste des articles</a>
 <div id="comments" class="text-left">
     <h3>Commentaires</h3>
     <?php
     foreach ($comments as $comment) {
-        ?>
-        <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
+    ?>
+        <h4 id="<?= htmlspecialchars($comment->getId());?>"><?= htmlspecialchars($comment->getPseudo());?></h4>
         <p><?= htmlspecialchars($comment->getContent());?></p>
         <p>Posté le <?= htmlspecialchars($comment->getDateAdded());?></p>
+        <div>
+            <p>
+                <a href="../public/index.php?route=reportComment&idArt=<?= htmlspecialchars($article->getId());?>&idComment=<?= htmlspecialchars($comment->getId());?>">Signaler ce commentaire</a>
+            </p>
+            <?php
+            if (isset($_SESSION['adminIsLoggued'])) {
+            ?>
+            <p>
+                <a href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>">Modifier</a> - 
+                <a href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>">Supprimer</a>
+            </p>
+        <?php
+        }
+        ?>
+        </div>
+        
+        <p></p>
         <?php
     }
     ?>

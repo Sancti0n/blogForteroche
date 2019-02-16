@@ -19,6 +19,7 @@ class FrontController {
     }
 
     public function reportComment($idComment, $idArt) {
+        var_dump($idArt);
         $commentDAO = new CommentDAO();
         $commentDAO->reportComment($idComment);
         header('Location: ../public/index.php?route=article&idArt='.$idArt.'#'.$idComment);
@@ -34,7 +35,6 @@ class FrontController {
             ]);
         }
         header('Location: ../public/index.php?route=article&idArt='.$idArt);
-        
     }
 
     public function home() {

@@ -11,12 +11,35 @@ class CommentDAO extends DAO {
         $this->sql($sql, [$id]);
     }
 
+    public function getComment($id) {
+        $sql = 'SELECT * FROM comment WHERE id = ?';
+        $result = $this->sql($sql, [$id]);
+        $row = $result->fetch();
+        if($row) {
+            return $this->buildObject($row);
+        }
+        else {
+            header('Location: ../templates/unknown.php');
+        }
+    }
+
+    public function deleteComment($id) {
+        $sql = 'DELETE FROM comment WHERE id = ?';
+        $this->sql($sql, [$id]);
+    }
+
     public function addCommentsFromForm($idArt, $comment) {
         extract($comment);
         if (isset($pseudo, $content) && !empty($pseudo) && !empty($content)) {
             $sql ='INSERT INTO comment (pseudo, content, article_id, date_added) VALUES (?, ?, ?, NOW())';
             $this->sql($sql, [$pseudo, $content, $idArt]);
         }
+    }
+
+    public function modifyComment($id, $post) {
+        extract($post);
+        $sql = 'UPDATE comment SET pseudo = ?, content = ?, is_reported = 0 WHERE id = ?';
+        $this->sql($sql, [$pseudo, $content, $id]);
     }
 
     public function getCommentsFromArticle($idArt) {
@@ -31,7 +54,7 @@ class CommentDAO extends DAO {
     }
 
     public function getComments() {
-        $sql = 'SELECT id, pseudo, content, date_added, is_reported FROM comment';
+        $sql = 'SELECT id, pseudo, content, date_added, is_reported, article_id FROM comment';
         $result = $this->sql($sql);
         $comments = [];
         foreach ($result as $row) {

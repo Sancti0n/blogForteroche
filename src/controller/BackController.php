@@ -17,6 +17,27 @@ class BackController {
         $this->commentDAO = new CommentDAO();
     }
 
+    public function deleteComment($idComment) {
+        $commentDAO = new CommentDAO();
+        $commentDAO->deleteComment($idComment);
+        header('Location: ../public/index.php?route=adminHome#manageComment');
+    }
+
+    public function updateComment($idComment) {
+        if (isset($_POST['submit']) && !empty($_POST['pseudo']) && !empty($_POST['content'])) {
+            $commentDAO = new CommentDAO();
+            $commentDAO->modifyComment($idComment, $_POST);
+            header('Location: ../public/index.php?route=adminHome');
+        }
+        $commentDAO = new CommentDAO();
+        $commentDAO->getComment($idComment);
+        $comment = $commentDAO->getComment($idComment);
+        $this->view->render('updateComment', [
+            'post' => $_POST,
+            'comment' => $comment
+        ]);
+    }
+
     public function addArticle($post) {
         if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
             $articleDAO = new ArticleDAO();

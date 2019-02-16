@@ -1,4 +1,4 @@
-<?php $this->title = "Page Administrateur"; ?>
+<?php $this->title = "Administration"; ?>
 <?php
 if (isset($_SESSION['add_article'])) {
     echo '<p>'.$_SESSION['add_article'].'<p>';
@@ -45,28 +45,47 @@ if (isset($_SESSION['add_article'])) {
         ?>
     </tbody>
 </table>
+<table>
+    <caption id="manageComment">Gestion des commentaires signalés</caption>
+    <thead>
+        <tr>
+            <th>Booléen</th>
+            <th>ID</th>
+            <th>Auteur</th>
+            <th>Modification</th>
+            <th>Suppression</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Booléen</th>
+            <th>ID</th>
+            <th>Auteur</th>
+            <th>Modification</th>
+            <th>Suppression</th>
+        </tr>
+    </tfoot>
+    <tbody>
+    
+    <?php
+    foreach ($comments as $comment) {
+    ?>
+    <?php
+        if ($comment->getIsReported() === '1') {
+        ?>
+        <tr>
+            <td><?= $comment->getIsReported(); ?></td>
+            <td><?= $comment->getId(); ?></td>
+            <td><?= $comment->getPseudo(); ?></td>
+            <td><a href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>">Modifier</a></td>
+            <td><a href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>">Supprimer</a></td>
+        <?php
+        }
+        ?>
+        </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+</table>     
 
-<?php
-foreach ($articles as $article) {
-?>
-    <div class="article">
-        <h2>
-            <a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?>
-            </a>
-        </h2>
-        <?= ($article->getContent());?>
-        <p><?= htmlspecialchars($article->getAuthor());?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
-    </div>
-    <br>
-<?php
-}
-?>
-
-<?php
-foreach ($comments as $comment) {
-?>
-    <?= ($comment->getIsReported()); ?>    
-<?php
-}
-?>
