@@ -1,24 +1,29 @@
-<header>
-    <h1>Le blog de Jean Forteroche</h1>
-    <h2>Acteur & Écrivain</h2>
-    <p><a href="../public/index.php">Accueil</a></p>
-    <?php
-    if (isset($_SESSION['adminIsLoggued'])) {
+<nav>
+    <div><span class="icon-book"></span> Jean Forteroche</div>
+    <div>
+        <a href="../public/index.php" class="button"><span class="icon-home"></span> Accueil</a>
+        <?php
+        if (isset($_SESSION['adminIsLoggued'])) {
         ?>
-        <p class="login"><?= $_SESSION['adminIsLoggued']?></p>
-        <p>
-            <a href="../public/index.php?route=adminHome">Administration</a>
-            <a href="../public/index.php?route=adminAddArticle">Ajouter un article</a>
-            <a href="../public/index.php?route=adminDeconnexion">Déconnexion</a>
-        </p>
-    <?php
-    }
-    else {
+        <a href="../public/index.php?route=adminHome" class="button"><span class="icon-user-check"></span> Administration</a>
+        <a href="../public/index.php?route=adminAddArticle" class="button"><span class="icon-plus-square"></span> Ajouter un article</a>
+        <a href="../public/index.php?route=adminDeconnexion" class="button"><span class="icon-power-off"></span> Déconnexion</a>
+        <?php
+        }
         ?>
-        <p class="connexion">
-            <a href="../public/index.php?route=adminLogin">Se connecter</a>
-        </p>
-    <?php
-    }
-    ?>
-</header>
+    </div>
+    <div>
+        <?php
+        if (isset($_SESSION['adminIsLoggued'])) {
+        ?>
+        <span class="icon-check-square-o"></span> <?= $_SESSION['adminIsLoggued'] ?>
+        <?php
+        }
+        else {
+        ?>
+        <a href="../public/index.php?route=adminLogin"><span class="icon-sign-in"></span> Se connecter</a>
+        <?php
+        }
+        ?>
+    </div>
+</nav>

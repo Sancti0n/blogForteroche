@@ -8,8 +8,55 @@ body {
     margin: 0;
     background-color: dodgerblue;
     padding: 0;
+    /*padding-top: 200px;*/
     padding-bottom: 7em;
     box-sizing: border-box;
+}
+
+nav {
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    background-color: #222222;
+    color: white;
+}
+
+nav>div {
+    display: block;
+    margin: 20px;
+}
+
+nav a:link,
+nav a:visited {
+    justify-content: space-between;
+    color: white;
+    /*padding: 14px 16px;*/
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: blue;
+}
+
+.button {
+    background-color: DodgerBlue;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 14px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.icon-check-square-o {
+    color: green;
+}
+
+#contents {
+    padding: 30px;
+    margin-top: 30px;
 }
 
 table {
@@ -23,22 +70,6 @@ td,
 th {
     border: 1px solid black;
     padding: 10px 10px 10px 10px;
-}
-
-a:link,
-a:visited {
-    text-decoration: none;
-    color: blue;
-}
-
-header {
-    background-color: white;
-    top: 0;
-    left: 0;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 100%;
-    text-align: center;
 }
 
 .article {
