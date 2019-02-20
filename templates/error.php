@@ -1,2 +1,1 @@
-<?php
-echo 'Erreur';
+<?php echo 'Erreur';

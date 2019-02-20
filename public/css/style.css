@@ -1,14 +1,22 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato-Semibold.ttf') format('ttf');
+}
+
 html {
     height: 100%;
 }
 
 body {
+    background-image: url("../img/wallpaper.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Lato', Arial, serif;
     position: relative;
     min-height: 100%;
     margin: 0;
     background-color: dodgerblue;
     padding: 0;
-    /*padding-top: 200px;*/
     padding-bottom: 7em;
     box-sizing: border-box;
 }
@@ -21,24 +29,27 @@ nav {
     position: fixed;
     background-color: #222222;
     color: white;
+    z-index: 1;
 }
 
 nav>div {
     display: block;
-    margin: 20px;
+    margin: 30px;
 }
 
 nav a:link,
-nav a:visited {
+nav a:visited,
+footer a:link,
+footer a:visited {
     justify-content: space-between;
     color: white;
-    /*padding: 14px 16px;*/
+    margin-left: 10px;
 }
 
 a:link,
 a:visited {
     text-decoration: none;
-    color: blue;
+    /*color: blue;*/
 }
 
 .button {
@@ -55,8 +66,7 @@ a:visited {
 }
 
 #contents {
-    padding: 30px;
-    margin-top: 30px;
+    margin-top: 200px;
 }
 
 table {
@@ -72,83 +82,133 @@ th {
     padding: 10px 10px 10px 10px;
 }
 
-.article {
+.article,
+.comments,
+.formComments,
+.formLogin,
+.messageLogin {
     background-color: white;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
-    border-radius: 10px;
+    margin-bottom: 80px;
+    margin-top: 10px;
+    width: 600px;
+    border-bottom: 6px solid DodgerBlue;
+    background-color: lightgrey;
+    border-radius: 10px 10px 10px 10px;
 }
 
-.article h2 {
+.title,
+.commentHeader,
+.authorComment,
+.titleMessage {
+    display: block;
     text-align: center;
+    background-color: #222222;
+    height: 50px;
+    margin-right: -5px;
+    margin-left: -5px;
+    margin-top: -25px;
+    border-radius: 10px 10px 0 0;
 }
 
-#comments {
-    background-color: white;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 400px;
-    padding-left: 10px;
-    padding-top: 0px;
+.title h2 {
+    padding-top: 10px;
 }
 
-#formComments {
-    background-color: white;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
+.title h2 a,
+.commentHeader h3,
+.authorComment h3,
+.titleMessage h3 {
+    color: white;
 }
 
-.formLogin {
-    display: block;
-    background-color: bisque;
-    margin-top: 100px;
-    width: 280px;
-    height: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
+.urlTitle {
+    color: black;
 }
 
-.formLogin p {
+.commentHeader h3,
+.authorComment h3,
+.titleMessage h3 {
+    padding-top: 14px;
+}
+
+.articleText,
+.commentText,
+.formPseudo label,
+.formContent label {
     padding-top: 10px;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
-.bouton {
-    display: inline-block;
-    padding: 10px 25px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 18px;
+.textButton a,
+.textButton input,
+tr a {
+    color: white;
+}
+
+.buttonReport,
+.buttonUpdate,
+.buttonDelete,
+.buttonLogin {
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.buttonReport,
+.buttonLogin {
+    background-color: DodgerBlue;
+}
+
+.buttonUpdate {
+    background-color: #ffbf00;
+}
+
+.buttonDelete {
+    background-color: Crimson;
+}
+
+.formPseudo,
+.formContent {
+    padding-top: 20px;
+}
+
+.formPassword {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.formContent {
+    padding-bottom: 10px;
+}
+
+textarea {
+    height: 200px;
+    width: 300px;
+}
+
+.formSubmit,
+.formPseudo,
+.formContent,
+.formLogin,
+.contentMessage {
     text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4ABDE4;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
 }
 
-.bouton:hover {
-    background-color: dodgerblue;
-}
-
-.bouton:active {
-    background-color: dodgerblue;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-
-.message {
-    text-align: center;
+.buttonSubmit {
+    background-color: DodgerBlue;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 14px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .formArticle {
@@ -165,11 +225,16 @@ th {
     padding-bottom: 10px;
 }
 
+#mceu_11 {
+    z-index: -1;
+}
+
 footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: white;
+    background-color: #222222;
+    color: white;
     text-align: center;
 }

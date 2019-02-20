@@ -9,13 +9,17 @@ if (isset($_SESSION['add_article'])) {
 foreach ($articles as $article) {
 ?>
     <div class="article">
-        <h2>
-            <a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?>
-            </a>
-        </h2>
-        <?= $article->getContent();?>
-        <p><?= htmlspecialchars($article->getAuthor());?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getDateAdded());?></p>
+        <div class="title">
+            <h2>
+                <a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?>
+                </a>
+            </h2>
+        </div>
+        <div class="articleText">
+            <?= $article->getContent();?>
+            <p><?= htmlspecialchars($article->getAuthor());?></p>
+            <p><span class="icon-calendar"></span> <?= htmlspecialchars($article->getDateAdded());?></p>
+        </div>
     </div>
     <br>
 <?php

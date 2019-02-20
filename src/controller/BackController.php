@@ -17,28 +17,38 @@ class BackController {
         $this->commentDAO = new CommentDAO();
     }
 
+    public static function adminIsLoggued() {
+        if (!isset($_SESSION['adminIsLoggued'])) {
+            header('Location: ../public/index.php?route=adminLogin');
+            exit();
+        }
+    }
+
     public function deleteComment($idComment) {
+        self::adminIsLoggued();
         $commentDAO = new CommentDAO();
         $commentDAO->deleteComment($idComment);
         header('Location: ../public/index.php?route=adminHome#manageComment');
     }
 
     public function updateComment($idComment) {
+        self::adminIsLoggued();
         if (isset($_POST['submit']) && !empty($_POST['pseudo']) && !empty($_POST['content'])) {
             $commentDAO = new CommentDAO();
-            $commentDAO->modifyComment($idComment, $_POST);
-            header('Location: ../public/index.php?route=adminHome');
+            $commentDAO->modifyComment($idComment, filter_input_array(INPUT_POST));
+            header('Location: ../public/index.php?'.$_SESSION['route']);
         }
         $commentDAO = new CommentDAO();
         $commentDAO->getComment($idComment);
         $comment = $commentDAO->getComment($idComment);
         $this->view->render('updateComment', [
-            'post' => $_POST,
+            'post' => filter_input_array(INPUT_POST),
             'comment' => $comment
         ]);
     }
 
     public function addArticle($post) {
+        self::adminIsLoggued();
         if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->addArticle($post);
@@ -51,6 +61,7 @@ class BackController {
     }
 
     public function updateArticle($idArt) {
+        self::adminIsLoggued();
         if (isset($_POST['submit']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
@@ -61,12 +72,13 @@ class BackController {
         $articleDAO->getArticle($idArt);
         $article = $articleDAO->getArticle($idArt);
         $this->view->render('updateArticle', [
-            'post' => $_POST,
+            'post' => filter_input_array(INPUT_POST),
             'article' => $article
         ]);
     }
 
     public function deleteArticle($idArt) {
+        self::adminIsLoggued();
         $articleDAO = new ArticleDAO();
         $articleDAO->deleteArticle($idArt);
         $_SESSION['delete_article'] = 'Un article a été supprimé';
@@ -112,6 +124,7 @@ class BackController {
     }
 
     public function adminHome() {
+        self::adminIsLoggued();
         $this->view->render('adminHome', [
             'articles' => $this->articleDAO->getArticles(),
             'comments' => $this->commentDAO->getComments()
@@ -119,6 +132,7 @@ class BackController {
     }
 
     public function adminDeconnexion() {
+        self::adminIsLoggued();
         $_SESSION = array();
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
