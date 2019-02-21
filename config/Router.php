@@ -47,6 +47,7 @@ class Router {
                 }
                 else if ($_GET['route'] === 'deleteArticle') {
                     $this->backController->deleteArticle($_GET['idArt']);
+                    $_SESSION['route'] = $_SERVER['QUERY_STRING'];
                 }
                 else if ($_GET['route'] === 'adminAddArticle') {
                     $this->backController->addArticle(filter_input_array(INPUT_POST));

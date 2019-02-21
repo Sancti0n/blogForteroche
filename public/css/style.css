@@ -8,9 +8,6 @@ html {
 }
 
 body {
-    background-image: url("../img/wallpaper.jpeg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     font-family: 'Lato', Arial, serif;
     position: relative;
     min-height: 100%;
@@ -49,7 +46,6 @@ footer a:visited {
 a:link,
 a:visited {
     text-decoration: none;
-    /*color: blue;*/
 }
 
 .button {
@@ -76,6 +72,19 @@ table {
     background-color: white;
 }
 
+.titleManage {
+    background-color: #222222;
+    color: white;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+    font-size: 22px;
+    padding-top: 14px;
+}
+
+.manageComment {
+    margin-top: 50px;
+}
+
 td,
 th {
     border: 1px solid black;
@@ -86,26 +95,27 @@ th {
 .comments,
 .formComments,
 .formLogin,
-.messageLogin {
+.messageLogin,
+.formArticle {
     background-color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 80px;
-    margin-top: 10px;
+    padding: 5px;
+    margin: 10px auto 80px;
     width: 600px;
     border-bottom: 6px solid DodgerBlue;
     background-color: lightgrey;
     border-radius: 10px 10px 10px 10px;
 }
 
+.formAdd label,
+.formAuthor {
+    padding-bottom: 10px;
+}
+
 .title,
 .commentHeader,
 .authorComment,
-.titleMessage {
+.titleMessage,
+.formTitle {
     display: block;
     text-align: center;
     background-color: #222222;
@@ -123,7 +133,8 @@ th {
 .title h2 a,
 .commentHeader h3,
 .authorComment h3,
-.titleMessage h3 {
+.titleMessage h3,
+.formTitle h3 {
     color: white;
 }
 
@@ -133,17 +144,23 @@ th {
 
 .commentHeader h3,
 .authorComment h3,
-.titleMessage h3 {
+.titleMessage h3,
+.formTitle h3 {
     padding-top: 14px;
 }
 
 .articleText,
 .commentText,
 .formPseudo label,
-.formContent label {
+.formContent label,
+.titleArticle {
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.textButton {
+    padding-bottom: 20px;
 }
 
 .textButton a,
@@ -198,7 +215,8 @@ textarea {
 .formPseudo,
 .formContent,
 .formLogin,
-.contentMessage {
+.contentMessage,
+.formArticle {
     text-align: center;
 }
 
@@ -211,24 +229,6 @@ textarea {
     cursor: pointer;
 }
 
-.formArticle {
-    display: block;
-    width: 800px;
-    height: 50%;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: bisque;
-    border-radius: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-}
-
-#mceu_11 {
-    z-index: -1;
-}
-
 footer {
     position: absolute;
     right: 0;
@@ -237,4 +237,74 @@ footer {
     background-color: #222222;
     color: white;
     text-align: center;
+}
+
+
+/* CSS pour tablette & mobile */
+
+@media all and (min-width: 1025px) {
+    body {
+        background-image: url("../img/wallpaper.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+}
+
+@media all and (max-width: 1024px) {
+    nav {
+        flex-direction: column;
+    }
+    nav>div {
+        margin: 10px;
+    }
+    .navName {
+        text-align: center;
+    }
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .menu a {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .button {
+        width: 34%;
+    }
+    #contents {
+        margin-top: 300px;
+    }
+    .article,
+    .comments,
+    .formComments,
+    .formLogin,
+    .messageLogin,
+    .formArticle {
+        width: 80%;
+    }
+    .textButton {
+        display: flex;
+    }
+    .articleText,
+    .commentText,
+    .formPseudo label,
+    .formContent label,
+    .titleArticle {
+        padding-left: 6px;
+    }
+    .textButton a {
+        text-align: center;
+        margin-right: 2px;
+    }
+    td,
+    th {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    table {
+        width: 80%;
+    }
+    textarea {
+        width: 90%;
+    }
 }

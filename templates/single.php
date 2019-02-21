@@ -13,6 +13,17 @@
     </div>
 </div>
 <br>
+
+<?php
+$haveComment = null;
+    foreach ($comments as $comment) {
+        if ($comment->getIsReported() === '1' || $comment->getIsReported() === '0') {
+            $haveComment = true;
+        }
+    }
+    if ($haveComment) {
+    ?>
+
 <div class="comments">
     <div class="commentHeader">
         <h3><span class="icon-bubble"></span> Commentaires</h3>
@@ -26,15 +37,13 @@
             <p><?= htmlspecialchars($comment->getContent());?></p>
             <p><span class="icon-calendar"></span> <?= htmlspecialchars($comment->getDateAdded());?></p>
         </div>
-        <div>
-            <p class="textButton">
-                <a class="buttonReport" href="../public/index.php?route=reportComment&idArt=<?= htmlspecialchars($article->getId());?>&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-flag"></span> Signaler</a> 
+        <div class="textButton">
+            <a class="buttonReport" href="../public/index.php?route=reportComment&idArt=<?= htmlspecialchars($article->getId());?>&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-flag"></span> Signaler</a> 
             <?php
             if (isset($_SESSION['adminIsLoggued'])) {
             ?>
-                <a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a> 
-                <a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a>
-            </p>
+            <a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a> 
+            <a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a>
             <?php
             }
             ?>
@@ -42,13 +51,13 @@
     </div>
     <?php
     }
-    ?>
+}
+?>
 </div>
 <div class="formComments">
     <div class="authorComment">
         <h3><span class="icon-commenting"></span> Ajouter un commentaire</h3>
     </div>
-    
     <form action="../public/index.php?route=postComment&idArt=<?= $article->getId(); ?>" method="post" class="form">
         <div class="formPseudo">
             <label for="pseudo">Votre pseudo</label>

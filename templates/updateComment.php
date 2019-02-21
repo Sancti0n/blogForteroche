@@ -1,17 +1,17 @@
 <?php $this->title = "Modifier un commentaire"; ?>
 <div class="formComments">
     <div class="authorComment">
-        <h3><span class="icon-commenting"></span> Ajouter un commentaire</h3>
+        <h3><span class="icon-commenting"></span> Modifier un commentaire</h3>
     </div>
     <form method="post" class="form" action="../public/index.php?route=updateComment&idComment=<?= $comment->getId(); ?>">
         <div class="formPseudo">
-            <label for="pseudo">Votre pseudo</label>
+            <label for="pseudo">Le pseudo</label>
             <input type="text" name="pseudo" id="pseudo" required value="<?php
                 echo $comment->getPseudo();
             ?>">
         </div>
         <div class="formContent">
-            <label for="content">Votre commentaire</label>
+            <label for="content">Le commentaire</label>
             <br>
             <textarea id="content" name="content"><?php 
                 echo $comment->getContent();

@@ -2,7 +2,7 @@ tinymce.init({
     mode: 'specific_textareas',
     editor_selector: 'mceEditor',
     height: '300',
-    width: '790',
+    width: '100%',
     language: 'fr_FR',
     language_url: 'http://localhost/projets_oc/projet_4/public/js/tinymce/langs/fr_FR.js',
     plugins: [

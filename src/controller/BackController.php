@@ -28,12 +28,14 @@ class BackController {
         self::adminIsLoggued();
         $commentDAO = new CommentDAO();
         $commentDAO->deleteComment($idComment);
-        header('Location: ../public/index.php?route=adminHome#manageComment');
+        header('Location: ../public/index.php?'.$_SESSION['route']);
     }
 
     public function updateComment($idComment) {
         self::adminIsLoggued();
-        if (isset($_POST['submit']) && !empty($_POST['pseudo']) && !empty($_POST['content'])) {
+        if (isset($_POST['submit']) && 
+            !empty($_POST['pseudo']) && 
+            !empty($_POST['content'])) {
             $commentDAO = new CommentDAO();
             $commentDAO->modifyComment($idComment, filter_input_array(INPUT_POST));
             header('Location: ../public/index.php?'.$_SESSION['route']);
@@ -49,20 +51,26 @@ class BackController {
 
     public function addArticle($post) {
         self::adminIsLoggued();
-        if (isset($post['submit']) && !empty($post['title']) && !empty($post['content']) && !empty($post['author'])) {
+        if (isset($post['submit']) && 
+            !empty($post['title']) && 
+            !empty($post['content']) && 
+            !empty($post['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->addArticle($post);
             $_SESSION['add_article'] = 'Le nouvel article a bien été ajouté';
             header('Location: ../public/index.php?route=adminHome');
         }
-        $this->view->render('add_article', [
+        $this->view->render('addArticle', [
             'post' => $post,
         ]);
     }
 
     public function updateArticle($idArt) {
         self::adminIsLoggued();
-        if (isset($_POST['submit']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
+        if (isset($_POST['submit']) && 
+            !empty($_POST['title']) && 
+            !empty($_POST['content']) && 
+            !empty($_POST['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
             $_SESSION['update_article'] = 'Un article a été modifié';
@@ -99,7 +107,8 @@ class BackController {
     }
 
     public function adminLogin() {
-        if (isset($_POST['pseudo']) && isset($_POST['motdepasse'])) {
+        if (isset($_POST['pseudo']) && 
+            isset($_POST['motdepasse'])) {
             $nom = $_POST['pseudo'];
             $motdepasse = $_POST['motdepasse'];
 

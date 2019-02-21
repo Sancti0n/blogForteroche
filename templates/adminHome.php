@@ -1,16 +1,26 @@
 <?php $this->title = "Administration"; ?>
 <?php
 if (isset($_SESSION['add_article'])) {
-    echo '<p>'.$_SESSION['add_article'].'<p>';
-    unset($_SESSION['add_article']);
+?>
+<div class="messageLogin">
+    <div class="titleMessage">
+        <h3>Ajout d'un article</h3>
+    </div>
+    <div class="contentMessage">
+        <p><?= $_SESSION['add_article']; ?><p>
+        <?php unset($_SESSION['add_article']);
 }
 ?>
-<table>
-    <caption>Gestion des articles</caption>
+    </div>
+</div>
+
+
+<table class="manageArticle">
+    <caption class="titleManage">Gestion des articles</caption>
     <thead>
         <tr>
             <th>ID</th>
-            <th>Titre</th>
+            <th>URL Article</th>
             <th>Auteur</th>
             <th>Date d'ajout</th>
             <th>Modification</th>
@@ -20,7 +30,7 @@ if (isset($_SESSION['add_article'])) {
     <tfoot>
         <tr>
             <th>ID</th>
-            <th>Titre</th>
+            <th>URL Article</th>
             <th>Auteur</th>
             <th>Date d'ajout</th>
             <th>Modification</th>
@@ -44,25 +54,20 @@ if (isset($_SESSION['add_article'])) {
         ?>
     </tbody>
 </table>
-<table>
+
+<table class="manageComment">
     <?php
     $hasReportedComment = null;
     foreach ($comments as $comment) {
-    ?>
-    <?php
         if ($comment->getIsReported() === '1') {
             $hasReportedComment = true;
         }
-        ?>
-        </tr>
-    <?php
     }
     if ($hasReportedComment) {
         ?>
-        <caption id="manageComment">Gestion des commentaires signalés</caption>
+        <caption class="titleManage">Gestion des commentaires signalés</caption>
         <thead>
         <tr>
-            <th>Booléen</th>
             <th>ID</th>
             <th>Auteur</th>
             <th>Modification</th>
@@ -71,7 +76,6 @@ if (isset($_SESSION['add_article'])) {
     </thead>
     <tfoot>
         <tr>
-            <th>Booléen</th>
             <th>ID</th>
             <th>Auteur</th>
             <th>Modification</th>
@@ -84,7 +88,6 @@ if (isset($_SESSION['add_article'])) {
             if ($comment->getIsReported() === '1') {
                 ?>
                 <tr>
-                    <td><?= $comment->getIsReported(); ?></td>
                     <td><?= $comment->getId(); ?></td>
                     <td><?= $comment->getPseudo(); ?></td>
                     <td><a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a></td>
