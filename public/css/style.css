@@ -96,7 +96,8 @@ th {
 .formComments,
 .formLogin,
 .messageLogin,
-.formArticle {
+.formArticle,
+.pageError {
     background-color: white;
     padding: 5px;
     margin: 10px auto 80px;
@@ -115,7 +116,8 @@ th {
 .commentHeader,
 .authorComment,
 .titleMessage,
-.formTitle {
+.formTitle,
+.titleError {
     display: block;
     text-align: center;
     background-color: #222222;
@@ -134,7 +136,8 @@ th {
 .commentHeader h3,
 .authorComment h3,
 .titleMessage h3,
-.formTitle h3 {
+.formTitle h3,
+.titleError h3 {
     color: white;
 }
 
@@ -145,7 +148,8 @@ th {
 .commentHeader h3,
 .authorComment h3,
 .titleMessage h3,
-.formTitle h3 {
+.formTitle h3,
+.titleError h3 {
     padding-top: 14px;
 }
 
@@ -202,6 +206,11 @@ tr a {
     padding-bottom: 10px;
 }
 
+.textError {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .formContent {
     padding-bottom: 10px;
 }
@@ -216,7 +225,8 @@ textarea {
 .formContent,
 .formLogin,
 .contentMessage,
-.formArticle {
+.formArticle,
+.textError {
     text-align: center;
 }
 

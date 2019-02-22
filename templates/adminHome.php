@@ -14,7 +14,6 @@ if (isset($_SESSION['add_article'])) {
     </div>
 </div>
 
-
 <table class="manageArticle">
     <caption class="titleManage">Gestion des articles</caption>
     <thead>

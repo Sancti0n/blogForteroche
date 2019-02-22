@@ -1,10 +1,20 @@
 <?php $this->title = "Accueil"; ?>
 <?php
 if (isset($_SESSION['add_article'])) {
-    echo '<p>'.$_SESSION['add_article'].'<p>';
-    unset($_SESSION['add_article']);
+?>
+<div class="messageLogin">
+    <div class="titleMessage">
+        <h3>Ajout d'un article</h3>
+    </div>
+    <div class="contentMessage">
+        <p><?= $_SESSION['add_article']; ?><p>
+        <?php unset($_SESSION['add_article']);?>
+    </div>
+</div>
+<?php
 }
 ?>
+
 <?php
 foreach ($articles as $article) {
 ?>

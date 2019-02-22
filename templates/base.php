@@ -10,9 +10,7 @@
     <?php
     require '../templates/header.php';
     ?>
-    <div id="contents">
-        <?= $contents ?>
-    </div>
+    <div id="contents"><?= $contents ?></div>
     <?php
     require '../templates/footer.php';
     if (isset($_SESSION['adminIsLoggued'])) {

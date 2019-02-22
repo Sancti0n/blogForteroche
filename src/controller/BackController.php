@@ -73,7 +73,6 @@ class BackController {
             !empty($_POST['author'])) {
             $articleDAO = new ArticleDAO();
             $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
-            $_SESSION['update_article'] = 'Un article a été modifié';
             header('Location: ../public/index.php?route=adminHome');
         }
         $articleDAO = new ArticleDAO();
@@ -89,7 +88,6 @@ class BackController {
         self::adminIsLoggued();
         $articleDAO = new ArticleDAO();
         $articleDAO->deleteArticle($idArt);
-        $_SESSION['delete_article'] = 'Un article a été supprimé';
         header('Location: ../public/index.php?route=adminHome');
     }
 
