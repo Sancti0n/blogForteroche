@@ -58,7 +58,7 @@ if (isset($_SESSION['add_article'])) {
     <?php
     $hasReportedComment = null;
     foreach ($comments as $comment) {
-        if ($comment->getIsReported() === '1') {
+        if (htmlspecialchars($comment->getIsReported()) === '1') {
             $hasReportedComment = true;
         }
     }
@@ -84,11 +84,11 @@ if (isset($_SESSION['add_article'])) {
     <tbody>
         <?php
         foreach ($comments as $comment) {
-            if ($comment->getIsReported() === '1') {
+            if (htmlspecialchars($comment->getIsReported()) === '1') {
                 ?>
                 <tr>
-                    <td><?= $comment->getId(); ?></td>
-                    <td><?= $comment->getPseudo(); ?></td>
+                    <td><?= htmlspecialchars($comment->getId()); ?></td>
+                    <td><?= htmlspecialchars($comment->getPseudo()); ?></td>
                     <td><a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a></td>
                     <td><a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a></td>
                 <?php

@@ -1,4 +1,4 @@
-<?php $this->title = $article->getTitle(); ?>
+<?php $this->title = htmlspecialchars($article->getTitle()); ?>
 <div class="article">
     <div class="title">
         <h2>
@@ -17,7 +17,7 @@
 <?php
 $haveComment = null;
     foreach ($comments as $comment) {
-        if ($comment->getIsReported() === '1' || $comment->getIsReported() === '0') {
+        if (htmlspecialchars($comment->getIsReported()) === '1' || htmlspecialchars($comment->getIsReported()) === '0') {
             $haveComment = true;
         }
     }
@@ -58,7 +58,7 @@ $haveComment = null;
     <div class="authorComment">
         <h3><span class="icon-commenting"></span> Ajouter un commentaire</h3>
     </div>
-    <form action="../public/index.php?route=postComment&idArt=<?= $article->getId(); ?>" method="post" class="form">
+    <form action="../public/index.php?route=postComment&idArt=<?= htmlspecialchars($article->getId()); ?>" method="post" class="form">
         <div class="formPseudo">
             <label for="pseudo">Votre pseudo</label>
             <input type="text" name="pseudo" id="pseudo" required value="<?php
