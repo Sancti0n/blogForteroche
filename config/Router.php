@@ -23,7 +23,7 @@ class Router {
             if (isset($_GET['route'])) {
                 if ($_GET['route'] === 'article') {
                     if (isset($_GET['idArt'])) {
-                        $this->frontController->article($_GET['idArt']);
+                        $this->frontController->article(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
                         $_SESSION['route'] = $_SERVER['QUERY_STRING'];
                     }
                     else {
@@ -31,22 +31,22 @@ class Router {
                     }
                 }
                 else if ($_GET['route'] === 'reportComment') {
-                    $this->frontController->reportComment($_GET['idComment'], $_GET['idArt']);
+                    $this->frontController->reportComment(filter_input(INPUT_GET, 'idComment', FILTER_SANITIZE_NUMBER_INT), filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
                 }
                 else if ($_GET['route'] === 'postComment') {
-                    $this->frontController->addCommentsFromForm($_GET['idArt'], filter_input_array(INPUT_POST));
+                    $this->frontController->addCommentsFromForm(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT), filter_input_array(INPUT_POST));
                 }
                 else if ($_GET['route'] === 'updateComment') {
-                    $this->backController->updateComment($_GET['idComment']);
+                    $this->backController->updateComment(filter_input(INPUT_GET, 'idComment', FILTER_SANITIZE_NUMBER_INT));
                 }
                 else if ($_GET['route'] === 'updateArticle') {
-                    $this->backController->updateArticle($_GET['idArt']);
+                    $this->backController->updateArticle(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
                 }
                 else if ($_GET['route'] === 'deleteComment') {
-                    $this->backController->deleteComment($_GET['idComment']);
+                    $this->backController->deleteComment(filter_input(INPUT_GET, 'idComment', FILTER_SANITIZE_NUMBER_INT));
                 }
                 else if ($_GET['route'] === 'deleteArticle') {
-                    $this->backController->deleteArticle($_GET['idArt']);
+                    $this->backController->deleteArticle(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
                     $_SESSION['route'] = $_SERVER['QUERY_STRING'];
                 }
                 else if ($_GET['route'] === 'adminAddArticle') {
