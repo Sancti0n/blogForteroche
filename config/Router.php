@@ -21,7 +21,7 @@ class Router {
     public function run() {
         try {
             $route = filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING);
-            if ($route) {
+            if (isset($route)) {
                 if (filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) === 'article') {
                     $idArticle = filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT);
                     if ($idArticle) {

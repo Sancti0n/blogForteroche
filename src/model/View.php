@@ -24,8 +24,6 @@ class View {
             require $file;
             return ob_get_clean();
         }
-        else {
-            echo 'Fichier inexistant';
-        }
+        echo 'Fichier inexistant';
     }
 }

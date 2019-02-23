@@ -63,7 +63,7 @@ $haveComment = null;
             <label for="pseudo">Votre pseudo</label>
             <input type="text" name="pseudo" id="pseudo" required value="<?php
                 if(isset($post['pseudo'])) {
-                    echo $post['pseudo'];
+                    echo filter_var($post['pseudo'], FILTER_SANITIZE_STRING);
                 }
             ?>">
         </div>
@@ -72,7 +72,7 @@ $haveComment = null;
             <br>
             <textarea id="content" name="content"><?php 
                 if (isset($post['content'])) {
-                    echo $post['content'];
+                    echo filter_var($post['content'], FILTER_SANITIZE_STRING);
                 }
             ?></textarea>
         </div>

@@ -107,8 +107,8 @@ class BackController {
     public function adminLogin() {
         if (isset($_POST['pseudo']) && 
             isset($_POST['motdepasse'])) {
-            $nom = $_POST['pseudo'];
-            $motdepasse = $_POST['motdepasse'];
+            $nom = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);
+            $motdepasse = filter_input(INPUT_POST, "motdepasse", FILTER_SANITIZE_STRING);
 
             if (self::verification($nom, $motdepasse)) {
                 session_regenerate_id();

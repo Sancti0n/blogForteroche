@@ -24,9 +24,7 @@ class ArticleDAO extends DAO {
         if($row) {
             return $this->buildObject($row);
         }
-        else {
-            header('Location: ../templates/unknown.php');
-        }
+        header('Location: ../templates/unknown.php');
     }
 
     public function addArticle($article) {
