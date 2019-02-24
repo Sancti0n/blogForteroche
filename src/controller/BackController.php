@@ -33,9 +33,10 @@ class BackController {
 
     public function updateComment($idComment) {
         self::adminIsLoggued();
-        if (isset($_POST['submit']) && 
-            !empty($_POST['pseudo']) && 
-            !empty($_POST['content'])) {
+        $submitComment = filter_input(INPUT_POST, "submit", FILTER_SANITIZE_STRING);
+        $pseudoComment = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);
+        $contentComment = filter_input(INPUT_POST, "content", FILTER_SANITIZE_STRING);
+        if (isset($submitComment) && $pseudoComment && $contentComment) {
             $commentDAO = new CommentDAO();
             $commentDAO->modifyComment($idComment, filter_input_array(INPUT_POST));
             header('Location: ../public/index.php?'.$_SESSION['route']);
@@ -67,10 +68,11 @@ class BackController {
 
     public function updateArticle($idArt) {
         self::adminIsLoggued();
-        if (isset($_POST['submit']) && 
-            !empty($_POST['title']) && 
-            !empty($_POST['content']) && 
-            !empty($_POST['author'])) {
+        $submitArticle = filter_input(INPUT_POST, "submit", FILTER_SANITIZE_STRING);
+        $titleArticle = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
+        $contentArticle = filter_input(INPUT_POST, "content", FILTER_SANITIZE_STRING);
+        $authorArticle = filter_input(INPUT_POST, "author", FILTER_SANITIZE_STRING);
+        if (isset($submitArticle) && $titleArticle && $contentArticle && $authorArticle) {
             $articleDAO = new ArticleDAO();
             $articleDAO->modifyArticle($idArt, filter_input_array(INPUT_POST));
             header('Location: ../public/index.php?route=adminHome');
@@ -105,11 +107,9 @@ class BackController {
     }
 
     public function adminLogin() {
-        if (isset($_POST['pseudo']) && 
-            isset($_POST['motdepasse'])) {
-            $nom = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);
-            $motdepasse = filter_input(INPUT_POST, "motdepasse", FILTER_SANITIZE_STRING);
-
+        $nom = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);
+        $motdepasse = filter_input(INPUT_POST, "motdepasse", FILTER_SANITIZE_STRING);
+        if (isset($nom) && isset($motdepasse)) {
             if (self::verification($nom, $motdepasse)) {
                 session_regenerate_id();
                 $_SESSION['adminIsLoggued'] = $nom;
