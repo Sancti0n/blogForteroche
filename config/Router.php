@@ -26,7 +26,7 @@ class Router {
                     $idArticle = filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT);
                     if ($idArticle) {
                         $this->frontController->article(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
-                        $_SESSION['route'] = $_SERVER['QUERY_STRING'];
+                        $_SESSION['route'] = filter_input(INPUT_SERVER, 'QUERY_STRING', FILTER_SANITIZE_STRING);
                     }
                     else {
                         $this->errorController->unknown();
@@ -49,14 +49,14 @@ class Router {
                 }
                 else if (filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) === 'deleteArticle') {
                     $this->backController->deleteArticle(filter_input(INPUT_GET, 'idArt', FILTER_SANITIZE_NUMBER_INT));
-                    $_SESSION['route'] = $_SERVER['QUERY_STRING'];
+                    $_SESSION['route'] = filter_input(INPUT_SERVER, 'QUERY_STRING', FILTER_SANITIZE_STRING);
                 }
                 else if (filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) === 'adminAddArticle') {
                     $this->backController->addArticle(filter_input_array(INPUT_POST));
                 }
                 else if (filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) === 'adminHome') {
                     $this->backController->adminHome();
-                    $_SESSION['route'] = $_SERVER['QUERY_STRING'];
+                    $_SESSION['route'] = filter_input(INPUT_SERVER, 'QUERY_STRING', FILTER_SANITIZE_STRING);
                 }
                 else if (filter_input(INPUT_GET, 'route', FILTER_SANITIZE_STRING) === 'adminDeconnexion') {
                     $this->backController->adminDeconnexion();
