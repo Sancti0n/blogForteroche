@@ -2,7 +2,7 @@
 <div class="article">
     <div class="title">
         <h2>
-            <a href="../public/index.php?route=article&idArt=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?>
+            <?= htmlspecialchars($article->getTitle());?>
             </a>
         </h2>
     </div>
