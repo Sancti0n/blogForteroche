@@ -1,6 +1,7 @@
 Guide d'installation
 
-    Changez le lien absolu dans language_url qui est situé dans tinymce.js, vous devez avoir un domaine pour votre tinymce, pour plus d'informations consultez le site de tinymce.
+    Changez le lien absolu dans language_url qui est situé dans tinymce.js, vous devez avoir un domaine 
+    pour votre tinymce, pour plus d'informations consultez le site de tinymce.
     Chemin : public\js\tinymce\tinymce.js
     
     Pour la connexion à la base de donnée, modifiez le fichier dev.php selon vos besoins.
