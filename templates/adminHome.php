@@ -9,11 +9,10 @@ if (isset($_SESSION['add_article'])) {
     <div class="contentMessage">
         <p><?= $_SESSION['add_article']; ?><p>
         <?php unset($_SESSION['add_article']); ?>
-    </div>
+    </div></div>
     <?php
 }
 ?>
-</div>
 
 <table class="manageArticle">
     <caption class="titleManage">Gestion des articles</caption>
@@ -27,16 +26,7 @@ if (isset($_SESSION['add_article'])) {
             <th>Suppression</th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>ID</th>
-            <th>URL Article</th>
-            <th>Auteur</th>
-            <th>Date d'ajout</th>
-            <th>Modification</th>
-            <th>Suppression</th>
-        </tr>
-    </tfoot>
+    
     <tbody>
         <?php
         foreach ($articles as $article) {
@@ -53,6 +43,16 @@ if (isset($_SESSION['add_article'])) {
         }
         ?>
     </tbody>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>URL Article</th>
+            <th>Auteur</th>
+            <th>Date d'ajout</th>
+            <th>Modification</th>
+            <th>Suppression</th>
+        </tr>
+    </tfoot>
 </table>
 
 <table class="manageComment">
@@ -64,9 +64,9 @@ if (isset($_SESSION['add_article'])) {
         }
     }
     if ($hasReportedComment) {
-        ?>
-        <caption class="titleManage">Gestion des commentaires signalés</caption>
-        <thead>
+    ?>
+    <caption class="titleManage">Gestion des commentaires signalés</caption>
+    <thead>
         <tr>
             <th>ID</th>
             <th>Auteur</th>
@@ -74,6 +74,25 @@ if (isset($_SESSION['add_article'])) {
             <th>Suppression</th>
         </tr>
     </thead>
+    
+    <tbody>
+    <?php foreach ($comments as $comment) {
+        if (htmlspecialchars($comment->getIsReported()) === '1') {
+    ?>
+        <tr>
+            <td><?= htmlspecialchars($comment->getId()); ?></td>
+            <td><?= htmlspecialchars($comment->getPseudo()); ?></td>
+            <td><a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a></td>
+            <td><a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a></td>
+        </tr>
+        <?php
+        }
+        ?>
+        <?php
+    }
+    }
+    ?>
+    </tbody>
     <tfoot>
         <tr>
             <th>ID</th>
@@ -82,24 +101,4 @@ if (isset($_SESSION['add_article'])) {
             <th>Suppression</th>
         </tr>
     </tfoot>
-    <tbody>
-        <?php
-        foreach ($comments as $comment) {
-            if (htmlspecialchars($comment->getIsReported()) === '1') {
-                ?>
-                <tr>
-                    <td><?= htmlspecialchars($comment->getId()); ?></td>
-                    <td><?= htmlspecialchars($comment->getPseudo()); ?></td>
-                    <td><a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a></td>
-                    <td><a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a></td>
-                </tr>
-                <?php
-                }
-                ?>
-                
-            <?php
-        }
-    }
-    ?>
-    </tbody>
 </table>
