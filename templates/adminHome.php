@@ -8,10 +8,11 @@ if (isset($_SESSION['add_article'])) {
     </div>
     <div class="contentMessage">
         <p><?= $_SESSION['add_article']; ?><p>
-        <?php unset($_SESSION['add_article']);
+        <?php unset($_SESSION['add_article']); ?>
+    </div>
+    <?php
 }
 ?>
-    </div>
 </div>
 
 <table class="manageArticle">
@@ -91,10 +92,11 @@ if (isset($_SESSION['add_article'])) {
                     <td><?= htmlspecialchars($comment->getPseudo()); ?></td>
                     <td><a class="buttonUpdate" href="../public/index.php?route=updateComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-edit"></span> Modifier</a></td>
                     <td><a class="buttonDelete" href="../public/index.php?route=deleteComment&idComment=<?= htmlspecialchars($comment->getId());?>"><span class="icon-trash-o"></span> Supprimer</a></td>
+                </tr>
                 <?php
                 }
                 ?>
-                </tr>
+                
             <?php
         }
     }

@@ -42,7 +42,7 @@ class ArticleDAO extends DAO {
     }
 
     public function deleteArticle($idArt) {
-        $sql = 'DELETE FROM comment WHERE article_id = ?';
+        $sql = 'DELETE FROM comments WHERE article_id = ?';
         $this->sql($sql, [$idArt]);
         $sql = 'DELETE FROM article WHERE id = ?';
         $this->sql($sql, [$idArt]);
